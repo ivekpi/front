@@ -5,6 +5,8 @@ WORKDIR '/app'
 COPY package.json .
 RUN npm install
 
-COPY . . 
+#COPY command is not needed beacuse we use volumes in docker-compose.yml
+# but it is recommended to use this instruction, more like a reminder or a reference 
+#COPY . . 
 
 CMD ["npm", "run", "start"]
