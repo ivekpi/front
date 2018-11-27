@@ -1,0 +1,9 @@
+sudo: required #we need sudo permissions
+services:
+  - docker
+
+before_install:
+  - docker build -t travis-frontend -f Dockerfile.dev . # tells travis how to build docker image
+
+script:
+  - docker run travis-frontend npm run test -- --coverage # double double dash and coverage makes the test image to exit back 
