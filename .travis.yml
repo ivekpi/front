@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run travis-frontend npm run test -- --coverage # double double dash and coverage makes the test image to exit back 
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-909068063530"
+  bucekt_path: "docker-react" #only for the first deplyoment, it will be created afterwards? 
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
